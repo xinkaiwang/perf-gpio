@@ -1,0 +1,33 @@
+{
+  "name": "perf-gpio",
+  "version": "0.0.1",
+  "description": "High performance GPIO tool kit for raspberry pi, including quadrature_decoder, DC motor control, soft PWM, buttons, etc. Based on c wiringpi.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xinkaiwang/perf-gpio.git"
+  },
+  "keywords": [
+    "High",
+    "performance",
+    "GPIO",
+    "raspberry",
+    "pi",
+    "quadrature",
+    "decoder",
+    "PWM",
+    "servo"
+  ],
+  "author": "xinkai wang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xinkaiwang/perf-gpio/issues"
+  },
+  "homepage": "https://github.com/xinkaiwang/perf-gpio#readme",
+  "dependencies": {
+    "nan": "^2.7.0"
+  }
+}
