@@ -2,20 +2,42 @@
 
 var isr = require('./build/Release/isr.node');
 
-var isSetup = 0;
+var isQdSetup = 0;
 
-function init(port1, port2) {
-    if (isSetup) {
+function quadrature_decoder(port1, port2) {
+    if (isQdSetup) {
         throw new Error('currently we only support 1 quadrature_decoder instance');
     } else {
-        isSetup = 1;
-        isr.setup(port1, port2);
+        isQdSetup = 1;
+        isr.qdSetup(port1, port2);
         return {
-            getCounter: function() { return isr.getCounter(); },
-            getIgnoredCount: function() { return isr.getIgnoredCount(); },
-            getConflictCount: function() { return isr.getConflictCount(); }
+            getCounter: function() { return isr.qdGetCounter(); },
+            getIgnoredCount: function() { return isr.qdGetIgnoredCount(); },
+            getConflictCount: function() { return isr.qdGetConflictCount(); }
         };
     }
 }
 
-module.exports.quadrature_decoder = init;
+function onoff(port) {
+    isr.onoffSetup(port);
+    return {
+        set: function(bit) { isr.onoffSet(port, bit ? 1 : 0); }
+    }
+}
+
+function button(port, pud) {
+    pud = pud || 'PUD_OFF';
+    var cb = function(err, val) { console.log(val); };
+    isr.buttonSetup(port, pud, cb);
+    return {
+        get: function() { return isr.buttonGet(port); }
+    };
+}
+
+button.PUD_OFF = 'PUD_OFF';
+button.PUD_UP = 'PUD_UP';
+button.PUD_DOWN = 'PUD_DOWN';
+
+module.exports.quadrature_decoder = quadrature_decoder;
+module.exports.onoff = onoff;
+module.exports.button = button;
