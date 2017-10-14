@@ -1,3 +1,5 @@
+"use strict"
+
 var button = require('./index').button;
 
 // https://pinout.xyz/pinout/wiringpi#

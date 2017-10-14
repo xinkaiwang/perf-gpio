@@ -27,10 +27,16 @@ function onoff(port) {
 
 function button(port, pud) {
     pud = pud || 'PUD_OFF';
-    var cb = function(err, val) { console.log(val); };
-    isr.buttonSetup(port, pud, cb);
+    var cb;
+    isr.buttonSetup(port, pud, function(err, val) {
+        // console.log(val);
+        if(cb) {
+            cb(err, val);
+        }
+    });
     return {
-        get: function() { return isr.buttonGet(port); }
+        get: function() { return isr.buttonGet(port); },
+        watch: function(callback) { cb = callback; }
     };
 }
 

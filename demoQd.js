@@ -1,3 +1,5 @@
+"use strict"
+
 var qd = require('./index').quadrature_decoder;
 
 // wiringpi PIN 0 and 1, maps to BCM GPIO 17 and 18
