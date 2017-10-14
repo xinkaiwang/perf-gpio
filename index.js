@@ -1,5 +1,7 @@
 //index.js
 
+// https://pinout.xyz/pinout/wiringpi#
+
 var isr = require('./build/Release/isr.node');
 
 var isQdSetup = 0;
@@ -28,15 +30,16 @@ function onoff(port) {
 function button(port, pud) {
     pud = pud || 'PUD_OFF';
     var cb;
-    isr.buttonSetup(port, pud, function(err, val) {
+    var slot = isr.buttonSetup(port, pud, function(err, val) {
         // console.log(val);
         if(cb) {
             cb(err, val);
         }
     });
     return {
-        get: function() { return isr.buttonGet(port); },
-        watch: function(callback) { cb = callback; }
+        get: function() { return isr.buttonGet(slot); },
+        watch: function(callback) { cb = callback; },
+        release: function() { isr.release(slot); }
     };
 }
 
