@@ -2,11 +2,16 @@
 
 #include <nan.h>
 
-// quadratureDecoder
-void qdGetCounter(const Nan::FunctionCallbackInfo<v8::Value>& info);
-void qdGetConflictCount(const Nan::FunctionCallbackInfo<v8::Value>& info);
-void qdGetIgnoredCount(const Nan::FunctionCallbackInfo<v8::Value>& info);
-void qdSetup(const Nan::FunctionCallbackInfo<v8::Value>& info);
+// quadratureHighRes
+void qdHighResGetCounter(const Nan::FunctionCallbackInfo<v8::Value>& info);
+void qdHighResGetConflictCount(const Nan::FunctionCallbackInfo<v8::Value>& info);
+void qdHighResGetIgnoredCount(const Nan::FunctionCallbackInfo<v8::Value>& info);
+void qdHighResSetup(const Nan::FunctionCallbackInfo<v8::Value>& info);
+
+// quadratureLowRes
+void qdLowResGetCounter(const Nan::FunctionCallbackInfo<v8::Value>& info);
+void qdLowResGetConflictCount(const Nan::FunctionCallbackInfo<v8::Value>& info);
+void qdLowResSetup(const Nan::FunctionCallbackInfo<v8::Value>& info);
 
 // onoff
 void onoffSetup(const Nan::FunctionCallbackInfo<v8::Value>& info);

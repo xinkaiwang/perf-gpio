@@ -4,18 +4,31 @@
 
 var isr = require('./build/Release/isr.node');
 
-var isQdSetup = 0;
-
+var isQdLowResSetup = 0;
 function quadrature_decoder(port1, port2) {
-    if (isQdSetup) {
+    if (isQdLowResSetup) {
         throw new Error('currently we only support 1 quadrature_decoder instance');
     } else {
-        isQdSetup = 1;
-        isr.qdSetup(port1, port2);
+        isQdLowResSetup = 1;
+        isr.qdLowResSetup(port1, port2);
         return {
-            getCounter: function() { return isr.qdGetCounter(); },
-            getIgnoredCount: function() { return isr.qdGetIgnoredCount(); },
-            getConflictCount: function() { return isr.qdGetConflictCount(); }
+            getCounter: function() { return isr.qdLowResGetCounter(); },
+            getConflictCount: function() { return isr.qdLowResGetConflictCount(); }
+        };
+    }
+}
+
+var isQdHighResSetup = 0;
+function quadrature_decoder_high_res(port1, port2) {
+    if (isQdHighResSetup) {
+        throw new Error('currently we only support 1 quadrature_decoder_high instance');
+    } else {
+        isQdHighResSetup = 1;
+        isr.qdHighResSetup(port1, port2);
+        return {
+            getCounter: function() { return isr.qdHighResGetCounter(); },
+            getIgnoredCount: function() { return isr.qdHighResGetIgnoredCount(); },
+            getConflictCount: function() { return isr.qdHighResGetConflictCount(); }
         };
     }
 }
@@ -48,5 +61,6 @@ button.PUD_UP = 'PUD_UP';
 button.PUD_DOWN = 'PUD_DOWN';
 
 module.exports.quadrature_decoder = quadrature_decoder;
+module.exports.quadrature_decoder_high_res = quadrature_decoder_high_res;
 module.exports.onoff = onoff;
 module.exports.button = button;

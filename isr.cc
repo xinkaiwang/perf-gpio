@@ -9,15 +9,23 @@ void Init(v8::Local<v8::Object> exports) {
       fprintf (stderr, "Unable to setup wiringPi: %s\n", strerror (errno));
   }
 
-  // Quadrature-Decoder
-  exports->Set(Nan::New("qdSetup").ToLocalChecked(),
-               Nan::New<v8::FunctionTemplate>(qdSetup)->GetFunction());
-  exports->Set(Nan::New("qdGetCounter").ToLocalChecked(),
-               Nan::New<v8::FunctionTemplate>(qdGetCounter)->GetFunction());
-  exports->Set(Nan::New("qdGetIgnoredCount").ToLocalChecked(),
-               Nan::New<v8::FunctionTemplate>(qdGetIgnoredCount)->GetFunction());
-  exports->Set(Nan::New("qdGetConflictCount").ToLocalChecked(),
-               Nan::New<v8::FunctionTemplate>(qdGetConflictCount)->GetFunction());
+  // Quadrature_Decoder_high_res
+  exports->Set(Nan::New("qdHighResSetup").ToLocalChecked(),
+               Nan::New<v8::FunctionTemplate>(qdHighResSetup)->GetFunction());
+  exports->Set(Nan::New("qdHighResGetCounter").ToLocalChecked(),
+               Nan::New<v8::FunctionTemplate>(qdHighResGetCounter)->GetFunction());
+  exports->Set(Nan::New("qdHighResGetIgnoredCount").ToLocalChecked(),
+               Nan::New<v8::FunctionTemplate>(qdHighResGetIgnoredCount)->GetFunction());
+  exports->Set(Nan::New("qdHighResGetConflictCount").ToLocalChecked(),
+               Nan::New<v8::FunctionTemplate>(qdHighResGetConflictCount)->GetFunction());
+
+  // Quadrature_Decoder_low_res
+  exports->Set(Nan::New("qdLowResSetup").ToLocalChecked(),
+               Nan::New<v8::FunctionTemplate>(qdLowResSetup)->GetFunction());
+  exports->Set(Nan::New("qdLowResGetCounter").ToLocalChecked(),
+               Nan::New<v8::FunctionTemplate>(qdLowResGetCounter)->GetFunction());
+  exports->Set(Nan::New("qdLowResGetConflictCount").ToLocalChecked(),
+               Nan::New<v8::FunctionTemplate>(qdLowResGetConflictCount)->GetFunction());
 
   // onoff output 1 bit
   exports->Set(Nan::New("onoffSetup").ToLocalChecked(),

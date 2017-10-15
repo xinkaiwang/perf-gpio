@@ -2,7 +2,7 @@
   "targets": [
     {
       "target_name": "isr",
-      "sources": [ "isr.cc", "button.cc", "onoff.cc", "quadratureDecoder.cc" ],
+      "sources": [ "isr.cc", "button.cc", "onoff.cc", "quadratureLowRes.cc", "quadratureHighRes.cc" ],
       "include_dirs": [
         "<!(node -e \"require('nan')\")",
         '<!(pwd)/wiringPi/wiringPi',

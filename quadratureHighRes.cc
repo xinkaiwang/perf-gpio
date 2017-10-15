@@ -1,4 +1,4 @@
-//quadratureDecoder.cc
+//quadratureHighRes.cc
 #include "isr.h"
 
 #include <errno.h>
@@ -100,19 +100,19 @@ void onInputBBoth(void) {
 }
 } // anonymous namespace
 
-void qdGetCounter(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+void qdHighResGetCounter(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   info.GetReturnValue().Set(eventCounter);
 }
 
-void qdGetConflictCount(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+void qdHighResGetConflictCount(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   info.GetReturnValue().Set(conflictCount);
 }
 
-void qdGetIgnoredCount(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+void qdHighResGetIgnoredCount(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   info.GetReturnValue().Set(ignoredCount);
 }
 
-void qdSetup(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+void qdHighResSetup(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   if (info.Length() < 2) {
     Nan::ThrowTypeError("Wrong number of arguments, expected 2");
     return;

@@ -1,6 +1,6 @@
 "use strict"
 
-var qd = require('./index').quadrature_decoder;
+var qd = require('./index').quadrature_decoder_high_res;
 
 // wiringpi PIN 0 and 1, maps to BCM GPIO 17 and 18
 // https://pinout.xyz/pinout/wiringpi#
@@ -10,5 +10,5 @@ timeout();
 
 function timeout() {
     setTimeout(timeout, 1000);
-    console.log('' + counter.getCounter() + ',' + counter.getIgnoredCount() + ',' + counter.getConflictCount());
+    console.log('' + counter.getCounter() + ',' + counter.getConflictCount());
 }
