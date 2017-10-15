@@ -1,5 +1,6 @@
 #include "isr.h"
 
+#include <errno.h>
 #include <wiringPi.h>
 
 void Init(v8::Local<v8::Object> exports) {

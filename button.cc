@@ -1,5 +1,6 @@
 #include "isr.h"
 
+#include <errno.h>
 #include <wiringPi.h>
 
 #define MAX_BUTTON_COUNT 8

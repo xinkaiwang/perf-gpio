@@ -36,6 +36,8 @@ check_git_clone() {
   fi
 }
 
+npm install nan
+
 rm ./install.log 2>/dev/null 1>&2
 
 echo -n "Cloning libWiringPi ... "
@@ -60,22 +62,22 @@ check_make_ok "devLib" 0
 cd ../../
 echo "done."
 
-cd ./wiringPi/gpio/
-echo -n "Unistalling gpio utility ... "
-sudo make uninstall >> ../../install.log 2>&1
-echo "done."
+# cd ./wiringPi/gpio/
+# echo -n "Unistalling gpio utility ... "
+# sudo make uninstall >> ../../install.log 2>&1
+# echo "done."
 
-echo -n "Making gpio utility ... "
-make clean >> ../../install.log 2>&1
-make >> ../../install.log 2>&1
-check_make_ok "gpio utility" 0
-echo "done."
+# echo -n "Making gpio utility ... "
+# make clean >> ../../install.log 2>&1
+# make >> ../../install.log 2>&1
+# check_make_ok "gpio utility" 0
+# echo "done."
 
-echo -n "Installing gpio utility ... "
-sudo make install >> ../../install.log 2>&1
-check_make_ok "gpio utility" 0
-cd ../../
-echo "done."
+# echo -n "Installing gpio utility ... "
+# sudo make install >> ../../install.log 2>&1
+# check_make_ok "gpio utility" 0
+# cd ../../
+# echo "done."
 
 echo -n "Making perf-gpio ... "
 node-gyp rebuild 2>&1 | tee -a ./install.log

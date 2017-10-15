@@ -1,6 +1,7 @@
 //quadratureDecoder.cc
 #include "isr.h"
 
+#include <errno.h>
 #include <wiringPi.h>
 
 // TODO: Currently this code can only support 1 quadrature-decoder (2 GPIO ports).
