@@ -4,7 +4,7 @@ var onoff = require('./index').onoff;
 
 // https://pinout.xyz/pinout/wiringpi#
 // wiring-pi 2 = GPIO27 = PIN13
-var led = onoff(2);
+var led = onoff(25);
 
 var current = false;
 

@@ -29,6 +29,8 @@
   },
   "homepage": "https://github.com/xinkaiwang/perf-gpio#readme",
   "dependencies": {
-    "nan": "^2.7.0"
+    "global-singleton": "^0.1.2",
+    "nan": "^2.7.0",
+    "rpio-pwm": "^0.2.0"
   }
 }

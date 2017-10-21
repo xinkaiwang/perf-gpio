@@ -79,9 +79,31 @@ function timeout() {
 }
 ```
 
+## led (basic)
+``` js
+var pin = require('perf-gpio').led(25); // wiringPi 25, GPIO 26
+pin(0.5); // 50% on
+```
+
+## led (more complete)
+``` js
+var led = require('perf-gpio').led;
+var pin = led(25); // wiringPi 25, GPIO 26
+pin(1);
+
+setTimeout(function() {
+    pin(0.5);
+    setTimeout(function() {
+        pin.close(); // turn off led before quit
+        led.shutdown(); // shutdown DMA device before quit
+        process.exit(0);
+    }, 2000);
+}, 2000);
+```
+
 
 # How it works
-Performance is the main reason I write this lib. perf-gpio is based on c wiringPi, most of the interrupt handling is done in c code. This is especially important for quadrature_decoder, so far perf-gpio is probably the best quadrature decoder available on raspberry-pi. And also perf-gpio is probably the only node.js gpio lib which supports pull-up/down resistors (which is a must-have for my project).  DMA based Soft-PWM and motor control is still on the way, may be availale later.
+Performance is the main reason I write this lib. perf-gpio is based on c wiringPi, most of the interrupt handling is done in c code. This is especially important for quadrature_decoder, so far perf-gpio is probably the best quadrature decoder available on raspberry-pi. And also perf-gpio is probably the only node.js gpio lib which supports pull-up/down resistors (which is a must-have for my project).  DMA based Soft-PWM is based on rpio-pwm.
 
 
 # license
