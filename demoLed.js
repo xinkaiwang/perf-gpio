@@ -8,7 +8,7 @@ pin(1);
 setTimeout(function() {
     pin(0.5);
     setTimeout(function() {
-        pin.close();
+        pin(0);
         led.shutdown();
         process.exit(0);
     }, 2000);

@@ -65,3 +65,4 @@ module.exports.quadrature_decoder_high_res = quadrature_decoder_high_res;
 module.exports.onoff = onoff;
 module.exports.button = button;
 module.exports.led = require('./led');
+module.exports.motor = require('./motor');

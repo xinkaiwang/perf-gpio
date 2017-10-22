@@ -49,20 +49,13 @@ function createPin(wiringPiPin) {
         }
         if (currentVal != val) {
             var newIntVal = Math.round(val * loopSize);
-            if (val > currentVal) {
-                ch.add_pulse(gpio, 0, newIntVal);
-                currentIntVal = newIntVal;
-                currentVal = val;
-            } else if (val < currentVal) {
+            ch.add_pulse(gpio, 0, newIntVal);
+            currentIntVal = newIntVal;
+            currentVal = val;
+            if (val == 0) {
                 ch.clear_gpio(gpio);
-                ch.add_pulse(gpio, 0, newIntVal);
-                currentIntVal = newIntVal;
-                currentVal = val;
             }
         }
-    }
-    setVal.close = function() {
-        ch.clear_gpio(gpio);
     }
     return setVal;
 }
