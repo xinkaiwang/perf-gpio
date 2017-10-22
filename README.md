@@ -103,10 +103,10 @@ setTimeout(function() {
 
 ## DC motor control
 ``` js
-var motor = require('./index').motor;
+var motor = require('perf-gpio').motor;
 // Need 2 pin to control a DC motor (forward/backword)
 // you need a H-bridge module to drive a DC motor
-var pin = motor(23, 25); 
+var pin = motor(23, 25);
 
 pin(-0.5); // anywhere range from [-1.0, +1.0]
 
