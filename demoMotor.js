@@ -1,6 +1,6 @@
 "use strict"
 
-var motor = require('./index').motor;
+var motor = require('./index').motor();
 var pin = motor(23, 25);
 
 var val = 1;

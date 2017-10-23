@@ -81,13 +81,14 @@ function timeout() {
 
 ## led (basic)
 ``` js
-var pin = require('perf-gpio').led(25); // wiringPi 25, GPIO 26
+var led = require('perf-gpio').led();
+var pin = led(25); // wiringPi 25, GPIO 26
 pin(0.5); // 50% on
 ```
 
 ## led (more complete)
 ``` js
-var led = require('perf-gpio').led;
+var led = require('perf-gpio').led();
 var pin = led(25); // wiringPi 25, GPIO 26
 pin(1);
 
@@ -103,7 +104,7 @@ setTimeout(function() {
 
 ## DC motor control
 ``` js
-var motor = require('perf-gpio').motor;
+var motor = require('perf-gpio').motor();
 // Need 2 pin to control a DC motor (forward/backword)
 // you need a H-bridge module to drive a DC motor
 var pin = motor(23, 25);
