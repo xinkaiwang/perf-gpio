@@ -38,3 +38,19 @@ void onoffSet(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   digitalWrite (port, val ? HIGH : LOW);  // On/off
 }
 
+void onoffRelease(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+  if (info.Length() < 1) {
+    Nan::ThrowTypeError("Wrong number of arguments, expected 2");
+    return;
+  }
+
+  if (!info[0]->IsNumber()) {
+    Nan::ThrowTypeError("Wrong arguments");
+    return;
+  }
+
+  double arg0 = info[0]->NumberValue();
+  int port = (int)arg0;
+
+  pinMode (port, INPUT);
+}

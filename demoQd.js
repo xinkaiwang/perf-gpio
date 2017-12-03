@@ -4,7 +4,7 @@ var qd = require('./index').quadrature_decoder_high_res;
 
 // wiringpi PIN 0 and 1, maps to BCM GPIO 17 and 18
 // https://pinout.xyz/pinout/wiringpi#
-var counter = qd(0,1);
+var counter = qd(28,29);
 
 timeout();
 

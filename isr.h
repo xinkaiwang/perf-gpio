@@ -16,6 +16,7 @@ void qdLowResSetup(const Nan::FunctionCallbackInfo<v8::Value>& info);
 // onoff
 void onoffSetup(const Nan::FunctionCallbackInfo<v8::Value>& info);
 void onoffSet(const Nan::FunctionCallbackInfo<v8::Value>& info);
+void onoffRelease(const Nan::FunctionCallbackInfo<v8::Value>& info);
 
 // button
 void buttonSetup(const Nan::FunctionCallbackInfo<v8::Value>& info);

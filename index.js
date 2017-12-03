@@ -36,7 +36,8 @@ function quadrature_decoder_high_res(port1, port2) {
 function onoff(port) {
     isr.onoffSetup(port);
     return {
-        set: function(bit) { isr.onoffSet(port, bit ? 1 : 0); }
+        set: function(bit) { isr.onoffSet(port, bit ? 1 : 0); },
+        release: function() { isr.onoffRelease(port); }
     }
 }
 

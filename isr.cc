@@ -32,6 +32,8 @@ void Init(v8::Local<v8::Object> exports) {
                Nan::New<v8::FunctionTemplate>(onoffSetup)->GetFunction());
   exports->Set(Nan::New("onoffSet").ToLocalChecked(),
                Nan::New<v8::FunctionTemplate>(onoffSet)->GetFunction());
+  exports->Set(Nan::New("onoffRelease").ToLocalChecked(),
+               Nan::New<v8::FunctionTemplate>(onoffRelease)->GetFunction());
 
   // button input 1 bit
   exports->Set(Nan::New("buttonSetup").ToLocalChecked(),
