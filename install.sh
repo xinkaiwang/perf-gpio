@@ -40,17 +40,29 @@ npm install nan
 
 rm ./install.log 2>/dev/null 1>&2
 
-echo -n "Cloning WiringPi ... "
-rm -Rf ./WiringPi 2>/dev/null 1>&2
+echo -n "Cloning libWiringPi ... "
+rm -Rf ./wiringPi 2>/dev/null 1>&2
 git clone https://github.com/WiringPi/WiringPi.git > ./install.log 2>&1
+cd WiringPi
+git checkout 70fa99a127ff150ee2b0975afe5be9547ddb44e3
+cd ../
 check_git_clone
 echo "done."
 
 echo -n "Making libWiringPi ... "
-cd ./WiringPi/
-./build
+cd ./WiringPi/wiringPi/
+make clean >> ../../install.log 2>&1
+make static >> ../../install.log 2>&1
 check_make_ok "libWiringPi" 1
-cd ../
+cd ../../
+echo "done."
+
+cd ./WiringPi/devLib/
+echo -n "Making devLib ..."
+make clean >> ../../install.log 2>&1
+make static >> ../../install.log 2>&1
+check_make_ok "devLib" 0
+cd ../../
 echo "done."
 
 echo -n "Making perf-gpio ... "

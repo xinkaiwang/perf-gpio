@@ -1,7 +1,7 @@
 "use strict"
 
 var led = require('./index').led();
-var pin = led(25);
+var pin = led(29);
 
 pin(1);
 

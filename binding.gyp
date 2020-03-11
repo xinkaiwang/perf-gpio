@@ -5,12 +5,12 @@
       "sources": [ "isr.cc", "button.cc", "onoff.cc", "quadratureLowRes.cc", "quadratureHighRes.cc" ],
       "include_dirs": [
         "<!(node -e \"require('nan')\")",
-        # '<!(pwd)/wiringPi/wiringPi',
-        # '<!(pwd)/wiringPi/devLib'
+        '<!(pwd)/WiringPi/wiringPi',
+        '<!(pwd)/WiringPi/devLib'
       ],
       'libraries': [
-        # '<!(pwd)/wiringPi/wiringPi/libwiringPi.a',
-        # '<!(pwd)/wiringPi/devLib/libwiringPiDev.a'
+        '<!(pwd)/WiringPi/wiringPi/libwiringPi.a',
+        '<!(pwd)/WiringPi/devLib/libwiringPiDev.a'
       ]
     }
 
