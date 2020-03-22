@@ -79,14 +79,14 @@ function timeout() {
 }
 ```
 
-## led (basic)
+## led (DMA-PWM basic)
 ``` js
 var led = require('perf-gpio').led();
 var pin = led(25); // wiringPi 25, GPIO 26
 pin(0.5); // 50% on
 ```
 
-## led (more complete)
+## led (DMA-PWM cnt.)
 ``` js
 var led = require('perf-gpio').led();
 var pin = led(25); // wiringPi 25, GPIO 26
@@ -119,9 +119,36 @@ function timeout() {
 
 setTimeout(timeout, 2000);
 ```
+Note: DC motor and LED shares the same DMA channel (14 for pi2/3/zero and 7 for pi4), 5ms cycle with 2us step size.
 
-# How it works
-Performance is the main reason I write this lib. perf-gpio is based on c wiringPi, most of the interrupt handling is done in c code. This is especially important for quadrature_decoder, so far perf-gpio is probably the best quadrature decoder available on raspberry-pi. And also perf-gpio is probably the only node.js gpio lib which supports pull-up/down resistors (which is a must-have for my project).  DMA based Soft-PWM is based on rpio-pwm.
+## Servo control
+``` js
+var servo = require('perf-gpio').servo();
+var pin = servo(29); // wiringpi_25=gpio_21=Phys_40
+
+pin(1500); // 1.5ms (mid)
+
+setTimeout(function () {
+  pin(500); // 0.5ms (min)
+  setTimeout(function () {
+    pin(2500); // 2.5ms (max)
+    setTimeout(function () {
+      pin(1500); // 1.5ms (mid)
+      setTimeout(function () {
+        servo.shutdown();
+        process.exit(0);
+      }, 500);
+    }, 1000);
+  }, 1000);
+}, 1000);
+```
+Note: Servo runs on it's own DMA channel (13 for pi2/3/zero and 6 for pi4), 20ms cycle with 10us step size.
+
+# Why perf-gpio?
+* Performance is the main reason I write this library.
+* perf-gpio is based on c wiringPi, most of the interrupt handling is done in c code. This is especially important for quadrature_decoder, so far perf-gpio is probably the best quadrature decoder available on raspberry-pi.
+* The DMA-PWM is based on rpio-pwm, which is the best (if not the only) DMA-PWM solution on node.js (that's the reason I spend my time created it).
+* perf-gpio also supports pull-up/down resistors (which is a must-have for my project).
 
 
 # license

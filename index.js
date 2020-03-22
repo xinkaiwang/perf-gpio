@@ -67,3 +67,4 @@ module.exports.onoff = onoff;
 module.exports.button = button;
 module.exports.led = require('./led');
 module.exports.motor = require('./motor');
+module.exports.servo = require('./servo');
