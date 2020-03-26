@@ -68,3 +68,4 @@ module.exports.button = button;
 module.exports.led = require('./led');
 module.exports.motor = require('./motor');
 module.exports.servo = require('./servo');
+module.exports.inputBank = require('./inputBank');

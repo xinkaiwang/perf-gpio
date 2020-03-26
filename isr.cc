@@ -40,6 +40,12 @@ void Init(v8::Local<v8::Object> exports) {
                Nan::New<v8::FunctionTemplate>(buttonSetup)->GetFunction());
   exports->Set(Nan::New("buttonGet").ToLocalChecked(),
                Nan::New<v8::FunctionTemplate>(buttonGet)->GetFunction());
+
+  // input bank N bits (0<=N<=31)
+  exports->Set(Nan::New("inputBankSetup").ToLocalChecked(),
+               Nan::New<v8::FunctionTemplate>(inputBankSetup)->GetFunction());
+  exports->Set(Nan::New("inputBankGet").ToLocalChecked(),
+               Nan::New<v8::FunctionTemplate>(inputBankGet)->GetFunction());
 }
 
 NODE_MODULE(isr, Init)

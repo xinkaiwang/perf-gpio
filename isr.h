@@ -21,3 +21,7 @@ void onoffRelease(const Nan::FunctionCallbackInfo<v8::Value>& info);
 // button
 void buttonSetup(const Nan::FunctionCallbackInfo<v8::Value>& info);
 void buttonGet(const Nan::FunctionCallbackInfo<v8::Value>& info);
+
+// inputBank
+void inputBankSetup(const Nan::FunctionCallbackInfo<v8::Value>& info);
+void inputBankGet(const Nan::FunctionCallbackInfo<v8::Value>& info);
