@@ -162,6 +162,14 @@ setTimeout(function () {
 ```
 Note: Servo runs on it's own DMA channel (13 for pi2/3/zero and 6 for pi4), 20ms cycle with 10us step size.
 
+## Clock Output
+``` js
+var clockOut = require('./index').clockOut();
+
+// wiring-pi 22 = GPIO6 = PIN31
+var pin = clockOut(22, 100000); // pin22 output clock 100kHz
+```
+
 # Why perf-gpio?
 * Performance is the main reason I write this library.
 * perf-gpio is based on c wiringPi, most of the interrupt handling is done in c code. This is especially important for quadrature_decoder, so far perf-gpio is probably the best quadrature decoder available on raspberry-pi.

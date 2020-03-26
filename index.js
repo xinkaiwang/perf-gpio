@@ -4,6 +4,8 @@
 
 var isr = require('./build/Release/isr.node');
 
+isr.wiringPiSetupSys();
+
 var isQdLowResSetup = 0;
 function quadrature_decoder(port1, port2) {
     if (isQdLowResSetup) {
@@ -69,3 +71,4 @@ module.exports.led = require('./led');
 module.exports.motor = require('./motor');
 module.exports.servo = require('./servo');
 module.exports.inputBank = require('./inputBank');
+module.exports.clockOut = require('./clockOut');

@@ -46,6 +46,13 @@ void Init(v8::Local<v8::Object> exports) {
                Nan::New<v8::FunctionTemplate>(inputBankSetup)->GetFunction());
   exports->Set(Nan::New("inputBankGet").ToLocalChecked(),
                Nan::New<v8::FunctionTemplate>(inputBankGet)->GetFunction());
+
+  // clock out
+  exports->Set(Nan::New("wiringPiSetupSys").ToLocalChecked(),
+               Nan::New<v8::FunctionTemplate>(wiringPiSetupSys)->GetFunction());
+  exports->Set(Nan::New("clockOutSetup").ToLocalChecked(),
+               Nan::New<v8::FunctionTemplate>(clockOutSetup)->GetFunction());
+
 }
 
 NODE_MODULE(isr, Init)
