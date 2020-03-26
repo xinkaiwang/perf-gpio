@@ -63,6 +63,24 @@ b.watch(function(err, status) {
 });
 ```
 
+## inputBank (setup multiple pins, read all at once, as bit mask)
+``` js
+var inputBank = require('perf-gpio').inputBank();
+// wiring-pi 25/24/23 = GPIO26/19/13 = PIN37/35/33
+var bank = inputBank([25, 24, 23], "PUD_DOWN");
+
+setTimeout(timeout, 1000);
+function timeout() {
+    setTimeout(timeout, 1000);
+    var val = bank();
+    // bit mask: bit 0 <= wp25, bit 1 <= wp24, bit 2 <= wp23
+    console.log(val);
+}
+```
+* Note: `inputBank` support batch read, but don't support edge-triggered callback. If you need callback, consider using `button`.
+* Note: `inputBank` and `button` can share the same pin. Under the hood they are both "input" mode, thus no conflict.
+
+
 ## quadrature_decoder
 ``` js
 var qd = require('perf-gpio').quadrature_decoder;
