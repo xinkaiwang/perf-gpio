@@ -167,8 +167,15 @@ Note: Servo runs on it's own DMA channel (13 for pi2/3/zero and 6 for pi4), 20ms
 var clockOut = require('./index').clockOut();
 
 // wiring-pi 22 = GPIO6 = PIN31
-var pin = clockOut(22, 100000); // pin22 output clock 100kHz
+var pinNum = 22;
+var pin = clockOut(pinNum);
+pin.setFeq(10000); // 10kHz
+.....
+pin.shutdown(); 
 ```
+* Note: This hardware clock, only available from a few pin.
+* Note: If don't shutdown, pi continue output clock even after your programe exits!
+* Note: valid range from [4.7k, 19.2M] (Hz)
 
 # Why perf-gpio?
 * Performance is the main reason I write this library.

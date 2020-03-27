@@ -8,9 +8,10 @@ var clockOut = require('./index').clockOut();
 // https://pinout.xyz/pinout/wiringpi#
 // wiring-pi 22 = GPIO6 = PIN31
 var pinNum = 22;
-var pin = clockOut(pinNum, 100000); // 100kHz
+var pin = clockOut(pinNum);
+pin.setFeq(10000); // 10kHz
 
-setTimeout(timeout, 1000);
+setTimeout(timeout, 5000);
 function timeout() {
-    setTimeout(timeout, 1000);
+    pin.shutdown(); // if don't shutdown, pi will continue output clock even after your programe exits!
 }

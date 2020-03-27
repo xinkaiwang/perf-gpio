@@ -4,7 +4,7 @@
 
 var isr = require('./build/Release/isr.node');
 
-isr.wiringPiSetupSys();
+isr.wiringPiSetup();
 
 var isQdLowResSetup = 0;
 function quadrature_decoder(port1, port2) {

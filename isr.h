@@ -27,5 +27,7 @@ void inputBankSetup(const Nan::FunctionCallbackInfo<v8::Value>& info);
 void inputBankGet(const Nan::FunctionCallbackInfo<v8::Value>& info);
 
 // clockOut
-void wiringPiSetupSys(const Nan::FunctionCallbackInfo<v8::Value>& info);
+void wiringPiSetup(const Nan::FunctionCallbackInfo<v8::Value>& info);
 void clockOutSetup(const Nan::FunctionCallbackInfo<v8::Value>& info);
+void clockOutSetFeq(const Nan::FunctionCallbackInfo<v8::Value>& info);
+void resetPinMode(const Nan::FunctionCallbackInfo<v8::Value>& info);

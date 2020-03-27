@@ -48,10 +48,14 @@ void Init(v8::Local<v8::Object> exports) {
                Nan::New<v8::FunctionTemplate>(inputBankGet)->GetFunction());
 
   // clock out
-  exports->Set(Nan::New("wiringPiSetupSys").ToLocalChecked(),
-               Nan::New<v8::FunctionTemplate>(wiringPiSetupSys)->GetFunction());
+  exports->Set(Nan::New("wiringPiSetup").ToLocalChecked(),
+               Nan::New<v8::FunctionTemplate>(wiringPiSetup)->GetFunction());
   exports->Set(Nan::New("clockOutSetup").ToLocalChecked(),
                Nan::New<v8::FunctionTemplate>(clockOutSetup)->GetFunction());
+  exports->Set(Nan::New("clockOutSetFeq").ToLocalChecked(),
+               Nan::New<v8::FunctionTemplate>(clockOutSetFeq)->GetFunction());
+  exports->Set(Nan::New("resetPinMode").ToLocalChecked(),
+               Nan::New<v8::FunctionTemplate>(resetPinMode)->GetFunction());
 
 }
 
