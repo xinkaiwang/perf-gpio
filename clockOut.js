@@ -8,16 +8,18 @@ function init() {
   function createClockOut(pinNum) {
     isr.clockOutSetup(pinNum);
 
+    var pin = {};
     function setFeq(newFeq) {
       isr.clockOutSetFeq(pinNum, newFeq);
+      return pin;
     }
     function shutdown() {
       isr.resetPinMode(pinNum);
+      return pin;
     }
-    return {
-      setFeq: setFeq,
-      shutdown: shutdown
-    };
+    pin.setFeq = setFeq;
+    pin.shutdown = shutdown;
+    return pin;
   }
 
   return createClockOut;

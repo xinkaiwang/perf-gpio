@@ -1,6 +1,6 @@
 {
   "name": "perf-gpio",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "High performance GPIO tool kit for raspberry pi, including quadrature_decoder, DC motor control, soft PWM, buttons, etc. Based on c wiringpi.",
   "main": "index.js",
   "scripts": {
@@ -31,6 +31,6 @@
   "dependencies": {
     "global-singleton": "^0.1.2",
     "nan": "^2.7.0",
-    "rpio-pwm": "^1.0.2"
+    "rpio-pwm": "^1.0.3"
   }
 }
