@@ -3,7 +3,7 @@
 #include <errno.h>
 #include <wiringPi.h>
 
-// 2 parameters: portMask, "PUD_UP"
+// 2 parameters: portMask, PULL
 // return: none
 void inputBankSetup(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   if (info.Length() < 2) {
@@ -16,15 +16,15 @@ void inputBankSetup(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     return;
   }
 
-  double arg0 = info[0]->NumberValue();
-  int portMap = (int)arg0;
-  v8::Local<v8::String> arg1 = info[1]->ToString();
-  Nan::Utf8String pud(arg1);
+  Nan::Maybe<double> arg0 = Nan::To<double>(info[0]);
+  int portMap = (int)arg0.FromJust();
+  Nan::Maybe<double> arg1 = Nan::To<double>(info[1]);
+  int pull = (int)arg1.FromJust(); // 0=off, 1=pull_up, 2=pull_down
 
   int pudInt = PUD_OFF;
-  if (strcmp(*pud, "PUD_UP") == 0) {
+  if (pull == 1) {
     pudInt = PUD_UP;
-  } else if (strcmp(*pud, "PUD_DOWN") == 0) {
+  } else if (pull == 2) {
     pudInt = PUD_DOWN;
   }
 
@@ -50,8 +50,8 @@ void inputBankGet(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     return;
   }
 
-  double arg0 = info[0]->NumberValue();
-  int portMap = (int)arg0;
+  Nan::Maybe<double> arg0 = Nan::To<double>(info[0]);
+  int portMap = (int)arg0.FromJust();
 
   uint32_t valueMask = 0;
   uint32_t mask = 0x01;

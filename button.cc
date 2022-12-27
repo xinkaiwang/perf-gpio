@@ -152,8 +152,8 @@ void buttonSetup(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     return;
   }
 
-  double arg0 = info[0]->NumberValue();
-  int port = (int)arg0;
+  Nan::Maybe<double> arg0 = Nan::To<double>(info[0]);
+  int port = (int)arg0.FromJust();
   v8::Local<v8::String> arg1 = info[1]->ToString();
   Nan::Utf8String pud(arg1);
 

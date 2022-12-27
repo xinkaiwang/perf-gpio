@@ -7,6 +7,8 @@ High performance GPIO tool kit for raspberry pi, including quadrature_decoder, D
 npm install perf-gpio --save
 ```
 
+Note: perf-gpio depend on dynamic-linked wiringPi at run-time, make sure you have wiringPi installed (`/usr/local/lib/libwiringPi.so` file).
+
 # API Example 
 https://pinout.xyz/pinout/wiringpi# is the best doc I can find for wiringpi Pin number mappings.
 ## onoff -- simple

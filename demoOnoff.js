@@ -3,8 +3,8 @@
 var onoff = require('./index').onoff;
 
 // https://pinout.xyz/pinout/wiringpi#
-// wiring-pi 2 = GPIO27 = PIN13
-var led = onoff(29);
+// wiring-pi 15 = GPIO14 = PIN8
+var led = onoff(15);
 
 var current = false;
 

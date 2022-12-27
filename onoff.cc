@@ -2,7 +2,7 @@
 
 #include <wiringPi.h>
 
-void onoffSetup(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+NAN_METHOD(onoffSetup) {
   if (info.Length() < 1) {
     Nan::ThrowTypeError("Wrong number of arguments, expected 2");
     return;
@@ -13,13 +13,13 @@ void onoffSetup(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     return;
   }
 
-  double arg0 = info[0]->NumberValue();
-  int port = (int)arg0;
+  Nan::Maybe<double> arg0 = Nan::To<double>(info[0]);
+  int port = (int)arg0.FromJust();
 
   pinMode (port, OUTPUT);
 }
 
-void onoffSet(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+NAN_METHOD(onoffSet) {
   if (info.Length() < 2) {
     Nan::ThrowTypeError("Wrong number of arguments, expected 2");
     return;
@@ -30,15 +30,15 @@ void onoffSet(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     return;
   }
 
-  double arg0 = info[0]->NumberValue();
-  double arg1 = info[1]->NumberValue();
-  int port = (int)arg0;
-  int val = (int)arg1;
+  Nan::Maybe<double> arg0 = Nan::To<double>(info[0]);
+  Nan::Maybe<double> arg1 = Nan::To<double>(info[1]);
+  int port = (int)arg0.FromJust();
+  int val = (int)arg1.FromJust();
 
   digitalWrite (port, val ? HIGH : LOW);  // On/off
 }
 
-void onoffRelease(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+NAN_METHOD(onoffRelease) {
   if (info.Length() < 1) {
     Nan::ThrowTypeError("Wrong number of arguments, expected 2");
     return;
@@ -49,8 +49,8 @@ void onoffRelease(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     return;
   }
 
-  double arg0 = info[0]->NumberValue();
-  int port = (int)arg0;
+  Nan::Maybe<double> arg0 = Nan::To<double>(info[0]);
+  int port = (int)arg0.FromJust();
 
   pinMode (port, INPUT);
 }

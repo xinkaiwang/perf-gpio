@@ -14,9 +14,12 @@ void qdLowResGetConflictCount(const Nan::FunctionCallbackInfo<v8::Value>& info);
 void qdLowResSetup(const Nan::FunctionCallbackInfo<v8::Value>& info);
 
 // onoff
-void onoffSetup(const Nan::FunctionCallbackInfo<v8::Value>& info);
-void onoffSet(const Nan::FunctionCallbackInfo<v8::Value>& info);
-void onoffRelease(const Nan::FunctionCallbackInfo<v8::Value>& info);
+NAN_METHOD(onoffSetup);
+NAN_METHOD(onoffSet);
+NAN_METHOD(onoffRelease);
+// void onoffSetup(const Nan::FunctionCallbackInfo<v8::Value>& info);
+// void onoffSet(const Nan::FunctionCallbackInfo<v8::Value>& info);
+// void onoffRelease(const Nan::FunctionCallbackInfo<v8::Value>& info);
 
 // button
 void buttonSetup(const Nan::FunctionCallbackInfo<v8::Value>& info);
@@ -27,7 +30,11 @@ void inputBankSetup(const Nan::FunctionCallbackInfo<v8::Value>& info);
 void inputBankGet(const Nan::FunctionCallbackInfo<v8::Value>& info);
 
 // clockOut
-void wiringPiSetup(const Nan::FunctionCallbackInfo<v8::Value>& info);
-void clockOutSetup(const Nan::FunctionCallbackInfo<v8::Value>& info);
-void clockOutSetFeq(const Nan::FunctionCallbackInfo<v8::Value>& info);
-void resetPinMode(const Nan::FunctionCallbackInfo<v8::Value>& info);
+NAN_METHOD(wiringPiSetup);
+NAN_METHOD(clockOutSetup);
+NAN_METHOD(clockOutSetFeq);
+NAN_METHOD(resetPinMode);
+// void wiringPiSetup(const Nan::FunctionCallbackInfo<v8::Value>& info);
+// void clockOutSetup(const Nan::FunctionCallbackInfo<v8::Value>& info);
+// void clockOutSetFeq(const Nan::FunctionCallbackInfo<v8::Value>& info);
+// void resetPinMode(const Nan::FunctionCallbackInfo<v8::Value>& info);

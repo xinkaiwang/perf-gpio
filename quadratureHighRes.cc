@@ -123,10 +123,10 @@ void qdHighResSetup(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     return;
   }
 
-  double arg0 = info[0]->NumberValue();
-  double arg1 = info[1]->NumberValue();
-  BUTTON1_PIN = (int)arg0;
-  BUTTON2_PIN = (int)arg1;
+  Nan::Maybe<double> arg0 = Nan::To<double>(info[0]);
+  Nan::Maybe<double> arg1 = Nan::To<double>(info[1]);
+  BUTTON1_PIN = (int)arg0.FromJust();
+  BUTTON2_PIN = (int)arg1.FromJust();
 
   // set Pin 17/0 generate an interrupt on high-to-low transitions
   // and attach myInterrupt() to the interrupt

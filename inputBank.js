@@ -9,7 +9,13 @@ function init() {
       portMask |= (1<<portList[i]);
     }
 
-    isr.inputBankSetup(portMask, pud);
+    pull = 0;
+    if (pud === "PUD_UP") {
+      pull = 1;
+    } else if (pud === "PUD_DOWN") {
+      pull = 2;
+    }
+    isr.inputBankSetup(portMask, pull);
 
     function getVal() {
       var valueMask = isr.inputBankGet(portMask);

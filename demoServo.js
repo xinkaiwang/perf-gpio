@@ -1,7 +1,7 @@
 "use strict"
 
 var servo = require('./index').servo();
-var pin = servo(29); // wiringpi_25=gpio_21=Phys_40
+var pin = servo(15); // wiringpi_15=gpio_14=Phys_8
 
 pin(1500); // 1.5ms (mid)
 
