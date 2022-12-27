@@ -44,9 +44,15 @@ function onoff(port) {
 }
 
 function button(port, pud) {
-    pud = pud || 'PUD_OFF';
+    var pull = 0;
+    if (pud === "PUD_UP") {
+      pull = 1;
+    } else if (pud === "PUD_DOWN") {
+      pull = 2;
+    }
+
     var cb;
-    var slot = isr.buttonSetup(port, pud, function(err, val) {
+    var slot = isr.buttonSetup(port, pull, function(err, val) {
         // console.log(val);
         if(cb) {
             cb(err, val);

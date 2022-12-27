@@ -9,7 +9,7 @@ function init() {
       portMask |= (1<<portList[i]);
     }
 
-    pull = 0;
+    var pull = 0;
     if (pud === "PUD_UP") {
       pull = 1;
     } else if (pud === "PUD_DOWN") {

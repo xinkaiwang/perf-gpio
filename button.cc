@@ -153,9 +153,9 @@ void buttonSetup(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   }
 
   Nan::Maybe<double> arg0 = Nan::To<double>(info[0]);
+  Nan::Maybe<double> arg1 = Nan::To<double>(info[1]);
   int port = (int)arg0.FromJust();
-  v8::Local<v8::String> arg1 = info[1]->ToString();
-  Nan::Utf8String pud(arg1);
+  int pull = (int)arg1.FromJust();
 
   int slot = findAvaSlot();
   if (slot < 0) return; // run out of slots?
@@ -166,9 +166,9 @@ void buttonSetup(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   workers[slot] = new InvokeCallbackWorker(slot, new Nan::Callback(buttonCallbacks[slot]->GetFunction()));
 
   int pudInt = PUD_OFF;
-  if (strcmp(*pud, "PUD_UP") == 0) {
+  if (pull == 1) {
     pudInt = PUD_UP;
-  } else if (strcmp(*pud, "PUD_DOWN") == 0) {
+  } else if (pull == 2) {
     pudInt = PUD_DOWN;
   }
 
@@ -194,8 +194,8 @@ void buttonGet(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     return;
   }
 
-  double arg0 = info[0]->NumberValue();
-  int slot = (int)arg0;
+  Nan::Maybe<double> arg0 = Nan::To<double>(info[0]);
+  int slot = (int)arg0.FromJust();
 
   int val = digitalRead (ports[slot]);  // 1/0
   info.GetReturnValue().Set(val);
@@ -212,8 +212,9 @@ void buttonRelease(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     return;
   }
 
-  double arg0 = info[0]->NumberValue();
-  int slot = (int)arg0;
+
+  Nan::Maybe<double> arg0 = Nan::To<double>(info[0]);
+  int slot = (int)arg0.FromJust();
 
   isButtonSlotInUse[slot] = false;
   ports[slot] = -1;
